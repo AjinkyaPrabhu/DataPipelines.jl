@@ -4,9 +4,10 @@ module DataPipelines
     greet() = print("Hello World!")
     export Compose
     export applyall
-    # export applyselected
-
-
+    export ToArray
+    export ToGray
+    export ToType
+    export ToBatchedTensor
 
 end # module
 

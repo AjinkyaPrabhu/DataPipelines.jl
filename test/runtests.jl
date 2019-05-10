@@ -1,37 +1,22 @@
 import Pkg
+using Images
 Pkg.activate(".")
 Pkg.instantiate()
 
 
 using DataPipelines
 
-function ToTensor(input)
-    return 1
+using Images
 
+com = Compose([
+                ToGray(),
+                ToArray(true),
+                ToType(Float64),
+               ])
+
+imgs = []
+for i in 1:3
+    push!(imgs,load("test/test.png"))
 end
 
-function ToTensor1(input)
-    return 2
-
-end
-
-
-function ToTensor2(input)
-    return 3
-
-end
-
-
-function ToTensor3(input)
-    return 4
-
-end
-
-
-
-
-
-com = Compose([ToTensor,ToTensor1,ToTensor2,ToTensor3])
-
-
-applyall(com,1)
+img = com.(imgs)
